@@ -5,7 +5,7 @@ https://nodejs.org/en/download
 
 3. Open your cmd 
 
-4. cd project folder(MoodTrack/moodtrack)
+4. cd project folder(MoodTrack)
 the same level  with package.json 
 
 5. npm install
