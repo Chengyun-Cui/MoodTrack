@@ -26,12 +26,12 @@ function HomePage() {
   // 心情选项
     const moods = [
       { emoji: '😊', label: 'Happy' },
-      { emoji: '😃', label: 'Excited' },
-      { emoji: '😎', label: 'Confident' },
+      // { emoji: '😃', label: 'Excited' },
+      // { emoji: '😎', label: 'Confident' },
       { emoji: '😌', label: 'Calm' },
       { emoji: '😢', label: 'Sad' },
       { emoji: '😠', label: 'Angry' },
-      { emoji: '😫', label: 'Stressed' },
+      // { emoji: '😫', label: 'Stressed' },
       { emoji: '😰', label: 'Anxious' }, 
       // { emoji: '😐', label: 'Neutral' } 
     ];
