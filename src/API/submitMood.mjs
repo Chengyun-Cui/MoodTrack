@@ -34,16 +34,20 @@ export const handler = async (event) => {
 
         const now = new Date();
         const timestamp = now.getTime();
-        const dateStr = now.toLocaleString();
+        
+        // 格式化日期为 "MM-DD" 格式
+        const month = (now.getMonth() + 1).toString().padStart(2, '0');
+        const day = now.getDate().toString().padStart(2, '0');
+        const dateStr = `${month}-${day}`;
 
         const params = {
             TableName: 'mood-tracker-moods',
             Item: {
                 UserID: userId,
                 timestamp: timestamp,
-                date: dateStr,
-                mood: mood,
-                moodText: moodText || '',
+                date: dateStr,  // "01-01" 格式
+                mood: mood,      // 数字 1-5
+                moodText: moodText || '',  // "Happy", "Calm" 等
                 note: note
             }
         };
