@@ -33,19 +33,28 @@ export const handler = async (event) => {
         }
 
         const now = new Date();
-        const timestamp = now.getTime();
+        const adjustedTime = new Date(now.getTime() - (5 * 60 * 60 * 1000));
+        const timestamp = adjustedTime.getTime();
         
-       
-        const month = (now.getMonth() + 1).toString().padStart(2, '0');
-        const day = now.getDate().toString().padStart(2, '0');
-        const dateStr = `${month}-${day}`;
+        const month = adjustedTime.getMonth() + 1;
+        const day = adjustedTime.getDate();
+        const year = adjustedTime.getFullYear();
+        let hours = adjustedTime.getHours();
+        const minutes = adjustedTime.getMinutes();
+        const seconds = adjustedTime.getSeconds();
+        
+        const ampm = hours >= 12 ? 'PM' : 'AM';
+        hours = hours % 12;
+        hours = hours ? hours : 12; // the hour '0' should be '12'
+        
+        const dateStr = `${month}/${day}/${year}, ${hours}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')} ${ampm}`;
 
         const params = {
             TableName: 'mood-tracker-moods',
             Item: {
                 UserID: userId,
                 timestamp: timestamp,
-                date: dateStr,  
+                date: dateStr, 
                 mood: mood,       
                 moodText: moodText || '',  
                 note: note
